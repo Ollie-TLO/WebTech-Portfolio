@@ -1,0 +1,17 @@
+{
+  "tag-pair": true,
+  "tagname-lowercase": false,
+  "attr-lowercase": true,
+  "attr-value-double-quotes": true,
+  "doctype-first": true,
+  "spec-char-escape": true,
+  "id-unique": true,
+  "head-script-disabled": true,
+  "img-alt-require": true,
+  "title-require": true,
+  "inline-style-disabled": false,
+  "inline-script-disabled": false,
+  "space-tab-mixed-disabled": "tab",
+  "attr-no-duplication": true,
+  "tag-req-body": ["body", "header", "footer", "article", "section"]
+}
