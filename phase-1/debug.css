@@ -1,0 +1,32 @@
+body { font-family: sans-serif; line-height: 1.4; }
+
+section { border: 2px solid red; margin: 10px; padding: 5px; }
+article { border: 2px solid blue; margin: 10px; padding: 5px; }
+aside { border: 2px dashed green; margin: 10px; padding: 5px; }
+header { background: #eee; padding: 2px; }
+footer { background: #ddd; padding: 2px; }
+
+h1,h2,h3,h4,h5,h6 { margin: 0.2em 0; }
+
+body > *:nth-child(even) { background-color: #f9f9f9; }
+body > *:nth-child(odd)  { background-color: #fff; }
+
+/*
+body {
+	counter-reset: h1counter;
+}
+
+h1 { counter-reset: h2counter; counter-increment: h1counter; }
+h2 { counter-reset: h3counter; counter-increment: h2counter; }
+h3 { counter-reset: h4counter; counter-increment: h3counter; }
+h4 { counter-reset: h5counter; counter-increment: h4counter; }
+h5 { counter-reset: h6counter; counter-increment: h5counter; }
+h6 { counter-increment: h6counter; }
+
+h1::before { content: counter(h1counter) ". "; }
+h2::before { content: counter(h1counter) "." counter(h2counter) " "; }
+h3::before { content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) " "; }
+h4::before { content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) " "; }
+h5::before { content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) "." counter(h5counter) " "; }
+h6::before { content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) "." counter(h5counter) "." counter(h6counter) " "; }
+*/
