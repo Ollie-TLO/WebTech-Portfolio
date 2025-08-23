@@ -7,6 +7,12 @@ header { background: #eee; padding: 2px; }
 footer { background: #ddd; padding: 2px; }
 
 h1,h2,h3,h4,h5,h6 { margin: 0.2em 0; }
+h1::before { content: "h1 "; }
+h2::before { content: "h2 "; }
+h3::before { content: "h3 "; }
+h4::before { content: "h4 "; }
+h5::before { content: "h5 "; }
+h6::before { content: "h6 "; }
 
 body > *:nth-child(even) { background-color: #f9f9f9; }
 body > *:nth-child(odd)  { background-color: #fff; }
