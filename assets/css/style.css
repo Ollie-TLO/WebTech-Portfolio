@@ -1,0 +1,10 @@
+body > header {
+	display: flex;
+	flex-direction: row;
+}
+body > header::after {
+	display: flex;
+	align-items: center;
+	content: "\2630";
+	margin-left: auto;
+}
