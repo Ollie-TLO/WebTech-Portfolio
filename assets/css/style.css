@@ -8,3 +8,6 @@ body > header::after {
 	content: "\2630";
 	margin-left: auto;
 }
+body > main {
+	max-width: 960px;
+}
