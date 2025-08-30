@@ -2,11 +2,13 @@ body > header {
 	display: flex;
 	flex-direction: row;
 }
-body > header::after {
-	display: flex;
-	align-items: center;
-	content: "\2630";
-	margin-left: auto;
+@media (max-width: 960px) {
+	body > header::after {
+		display: flex;
+		align-items: center;
+		content: "\2630";
+		margin-left: auto;
+	}
 }
 body > main {
 	max-width: 960px;
