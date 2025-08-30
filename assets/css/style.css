@@ -17,3 +17,7 @@ body > nav {
 main > aside {
 	display: none
 }
+body > footer {
+	display:flex;
+	align-items: center;
+}
