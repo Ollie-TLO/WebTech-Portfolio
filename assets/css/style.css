@@ -16,6 +16,11 @@ body > main {
 body > nav {
 	display: none;
 }
+@media (min-width: 960px) {
+	body > nav {
+		display: block;
+	}
+}
 main > aside {
 	display: none
 }
