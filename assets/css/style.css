@@ -11,3 +11,9 @@ body > header::after {
 body > main {
 	max-width: 960px;
 }
+body > nav {
+	display: none;
+}
+main > aside {
+	display: none
+}
