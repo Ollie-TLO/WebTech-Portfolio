@@ -6,20 +6,10 @@ body > header {
 	z-index: 1000;
 	background-color: white;
 }
-@media (max-width: 960px) {
-	body > header::after {
-		display: flex;
-		align-items: center;
-		content: "\2630";
-		margin-left: auto;
-	}
-	main {
-		grid-template-columns: 2fr;
-	}
-}
 body > nav {
 	display: none;
 }
+/* grid seems to be a bad fit for this. Should use 2 flexboxes instead */
 main {
 	max-width: 960px;
 	margin: 0 auto;
@@ -31,6 +21,25 @@ main > article {
 	padding: 1em;
 	margin: 1em;
 	background-color: #f0f0f0;
+}
+main > aside {
+	grid-column: 2;
+	grid-row: 1 / -1; /* span from first to last row */
+	padding: 1em;
+	margin: 1em;
+	align-self: start;
+	background-color: #f0f0f0;
+}
+@media (max-width: 960px) {
+	body > header::after {
+		display: flex;
+		align-items: center;
+		content: "\2630";
+		margin-left: auto;
+	}
+	main {
+		grid-template-columns: 2fr;
+	}
 }
 .main-container { /* main wrapper so main can use grid stuff */
 	display: grid;
@@ -49,6 +58,6 @@ main > aside {
 	}
 }
 body > footer {
-	display:flex;
+	display: flex;
 	align-items: center;
 }
