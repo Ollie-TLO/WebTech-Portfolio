@@ -1,13 +1,36 @@
-body > header {
-	display: flex;
-	flex-direction: row;
+/* zero some things that normalise doesnt */
+/* header, nav, h1, h2, h3, h4, h5, h6, ul, ol, p {
+	margin: 0;
+	padding: 0;
+}*/
+.sticky-block {
 	position: sticky;
 	top: 0;
-	z-index: 1000;
 	background-color: white;
 }
-body > nav {
+.sticky-block > header {
+	display: flex;
+	flex-direction: row;
+}
+.sticky-block > nav {
 	display: none;
+}
+.sticky-block > header > h1 {
+	margin: 0;
+	padding: 0;
+}
+.sticky-block > nav {
+	display: flex;
+	justify-content: center;
+}
+.sticky-block > nav ul {
+	list-style: none;
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+}
+.sticky-block > nav a {
+	text-decoration: none;
 }
 /* grid seems to be a bad fit for this. Should use 2 flexboxes instead */
 main {
@@ -31,11 +54,14 @@ main > aside {
 	background-color: #f0f0f0;
 }
 @media (max-width: 960px) {
-	body > header::after {
+	.sticky-block > header::after {
 		display: flex;
 		align-items: center;
 		content: "\2630";
 		margin-left: auto;
+	}
+	.sticky-block > nav {
+		display: none;
 	}
 	main {
 		grid-template-columns: 2fr;
@@ -60,4 +86,7 @@ main > aside {
 body > footer {
 	display: flex;
 	align-items: center;
+}
+body > footer ul {
+	list-style: none;
 }
