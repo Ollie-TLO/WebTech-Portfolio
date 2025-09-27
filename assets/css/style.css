@@ -12,15 +12,18 @@
 	display: flex;
 	flex-direction: row;
 }
-.sticky-block > nav {
-	display: none;
+.sticky-block > header::after {
+	display: flex;
+	align-items: center;
+	content: "\2630";
+	margin-left: auto;
 }
 .sticky-block > header > h1 {
 	margin: 0;
 	padding: 0;
 }
 .sticky-block > nav {
-	display: flex;
+	display: none;
 	justify-content: center;
 }
 .sticky-block > nav ul {
@@ -37,7 +40,7 @@ main {
 	max-width: 960px;
 	margin: 0 auto;
 	display: grid;
-	grid-template-columns: 2fr 1fr;
+	grid-template-columns: 2fr;
 }
 main > article {
 	grid-column: 1;
@@ -46,6 +49,7 @@ main > article {
 	background-color: #f0f0f0;
 }
 main > aside {
+	display: none;
 	grid-column: 2;
 	grid-row: 1 / -1; /* span from first to last row */
 	padding: 1em;
@@ -53,31 +57,20 @@ main > aside {
 	align-self: start;
 	background-color: #f0f0f0;
 }
-@media (max-width: 960px) {
-	.sticky-block > header::after {
-		display: flex;
-		align-items: center;
-		content: "\2630";
-		margin-left: auto;
-	}
-	.sticky-block > nav {
-		display: none;
-	}
-	main {
-		grid-template-columns: 2fr;
-	}
-}
 .main-container { /* main wrapper so main can use grid stuff */
 	display: grid;
 	align-items: center;
 	margin: 0;
 }
-main > aside {
-	display: none;
-}
 @media (min-width: 960px) {
-	body > nav {
-		display: block;
+	.sticky-block > header::after {
+		display: none
+	}
+	.sticky-block > nav {
+		display: flex;
+	}
+	main {
+		grid-template-columns: 2fr 1fr;
 	}
 	main > aside {
 		display: block
