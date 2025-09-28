@@ -1,8 +1,6 @@
-/* zero some things that normalise doesnt */
-/* header, nav, h1, h2, h3, h4, h5, h6, ul, ol, p {
-	margin: 0;
-	padding: 0;
-}*/
+:root {
+	--max-width: 960px;
+}
 .sticky-block {
 	position: sticky;
 	top: 0;
@@ -32,11 +30,10 @@
 	display: flex;
 	justify-content: space-around;
 }
-.sticky-block > nav a {
-	text-decoration: none;
-}
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
 main {
-	max-width: 960px;
+	max-width: var(--max-width);
 	margin: 0 auto;
 	display: grid;
 	grid-template-columns: 2fr;
@@ -46,33 +43,21 @@ article, aside {
 	margin: 1em;
 	background-color: #f0f0f0;
 }
-/*aside {
-	padding: 1em;
-	margin: 1em;
-	align-self: start;
-	background-color: #f0f0f0;
-}*/
 .articles-column {
 	row-gap: 0em;
 }
 .asides-column {
-	display: none;                 /* aside column only as tall as its content */
-	/*align-self: start;              /* prevents stretching to full grid height */
+	display: none;
 }
 article img {
 	float: right;         /* pushes the image to the right */
-	margin: 0 0 1em 1em;  /* spacing: bottom + left */
-	max-width: 40%;       /* scale image so it doesn’t dominate */
-	height: auto;
+	margin: 0 0 1em 1em;
+	max-width: 40%;
+	height: auto;         /* maintain aspect ratio */
 }
 aside img {
-	max-width: 100%;  /* never wider than its container */
-	height: auto;     /* maintain aspect ratio */
-}
-.main-container { /* main wrapper so main can use grid stuff */
-	display: grid;
-	align-items: center;
-	margin: 0;
+	max-width: 100%;      /* never wider than its container */
+	height: auto;         /* maintain aspect ratio */
 }
 @media (min-width: 960px) {
 	.sticky-block > header::after {
@@ -89,9 +74,14 @@ aside img {
 	}
 }
 body > footer {
+	max-width: var(--max-width);
+	margin: 0 auto;
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
+	padding: 0 1em;
 }
 body > footer ul {
 	list-style: none;
+	text-align: right;  /* pushes <li> content to the right */
 }
