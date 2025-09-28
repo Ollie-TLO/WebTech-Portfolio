@@ -35,27 +35,39 @@
 .sticky-block > nav a {
 	text-decoration: none;
 }
-/* grid seems to be a bad fit for this. Should use 2 flexboxes instead */
 main {
 	max-width: 960px;
 	margin: 0 auto;
 	display: grid;
 	grid-template-columns: 2fr;
 }
-main > article {
-	grid-column: 1;
+article, aside {
 	padding: 1em;
 	margin: 1em;
 	background-color: #f0f0f0;
 }
-main > aside {
-	display: none;
-	grid-column: 2;
-	grid-row: 1 / -1; /* span from first to last row */
+/*aside {
 	padding: 1em;
 	margin: 1em;
 	align-self: start;
 	background-color: #f0f0f0;
+}*/
+.articles-column {
+	row-gap: 0em;
+}
+.asides-column {
+	display: none;                 /* aside column only as tall as its content */
+	/*align-self: start;              /* prevents stretching to full grid height */
+}
+article img {
+	float: right;         /* pushes the image to the right */
+	margin: 0 0 1em 1em;  /* spacing: bottom + left */
+	max-width: 40%;       /* scale image so it doesn’t dominate */
+	height: auto;
+}
+aside img {
+	max-width: 100%;  /* never wider than its container */
+	height: auto;     /* maintain aspect ratio */
 }
 .main-container { /* main wrapper so main can use grid stuff */
 	display: grid;
@@ -72,7 +84,7 @@ main > aside {
 	main {
 		grid-template-columns: 2fr 1fr;
 	}
-	main > aside {
+	.asides-column {
 		display: block
 	}
 }
