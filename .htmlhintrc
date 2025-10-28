@@ -1,6 +1,5 @@
 {
   "tag-pair": true,
-  "tagname-lowercase": false,
   "attr-lowercase": true,
   "attr-value-double-quotes": true,
   "doctype-first": true,
@@ -13,5 +12,10 @@
   "inline-script-disabled": false,
   "space-tab-mixed-disabled": "tab",
   "attr-no-duplication": true,
-  "tag-req-body": ["body", "header", "footer", "article", "section"]
+  "tag-req-body": ["body", "header", "footer", "article", "section"],
+  "tagname-lowercase": true,
+  "src-not-empty": true,
+  "style-disabled": true,
+  "attr-no-unknown": true,
+  "attr-value-not-empty":true
 }
