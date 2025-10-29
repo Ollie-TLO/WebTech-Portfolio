@@ -108,25 +108,27 @@
 							<h3>COPY, COPY</h3> feat: rudimentary form
 						</header> -->
 						<h2>API Tool Sample</h2>
-						<div>
-							<input type="radio" name="radioGroupE" id="radioButtonE" value="exercise" class="radioGroup">
-							<label for="radioButtonE">Exercises API</label>
-						</div>
-						<div>
-							<input type="radio" name="radioGroupP" id="radioButtonP" value="phone" class="radioGroup">
-							<label for="radioButtonP">Validate Phone API</label>
-						</div>
-						<div>
-							<label for="queryString">Query:</label>
-							<textarea id="queryString" rows="1" cols="50"></textarea>
-						</div>
-						<div>
-							<button type="submit" id="executeButton">Execute</button>
-						</div>
-						<div>
-							<label for="responseString">Query:</label>
-							<textarea id="responseString" rows="15" cols="80"></textarea>
-						</div>
+						<form id="apiToolForm">
+							<div>
+								<input type="radio" name="radioGroupE" id="exercisesRB" value="exercise" class="radioGroup">
+								<label for="exercisesRB">Exercises API</label>
+							</div>
+							<div>
+								<input type="radio" name="radioGroupP" id="validatephoneRB" value="phone" class="radioGroup">
+								<label for="validatephoneRB">Validate Phone API</label>
+							</div>
+							<div>
+								<label for="queryString">Query:</label>
+								<input type="text" id="queryString" cols="50" placeholder="First, select an API">
+							</div>
+							<div>
+								<button type="submit" id="executeButton">Execute</button>
+							</div>
+							<div>
+								<label for="responseString">Response:</label>
+								<textarea id="responseString" readonly rows="25" cols="80">UU</textarea>
+							</div>
+						</form>
 						<script src="../assets/js/ninja-api.js"></script>
 						<!-- <p></p> -->
 					</section>
