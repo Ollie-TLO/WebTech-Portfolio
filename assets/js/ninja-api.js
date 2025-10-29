@@ -14,22 +14,29 @@ function fff(event) {
 			// This is the 'on' radio button that we must turn 'off'
 			radio.checked = false;
 			// Save the query before it is overwritten
-			apiDefaultStrings[radio.id] = document.getElementById("queryString").value;
-			//console.log("radio.id: " + radio.id);
-			//console.log("Saving: " + apiDefaultStrings[radio.id]);
-			//onsole.log("DB: " + JSON.stringify(apiDefaultStrings, null, "\t"));
+const elem = document.getElementById("queryString");
+console.log(elem, typeof elem, elem.value);
+			console.log("DB: " + JSON.stringify(apiQueryStrings, null, "\t"));
+			console.log(document.getElementById("queryString").value);
+			apiQueryStrings[radio.id].query = document.getElementById("queryString").value;
+			console.log("DB: " + JSON.stringify(apiQueryStrings, null, "\t"));
+			console.log(apiQueryStrings[radio.id].query);
+			console.log("radio.id: " + radio.id);
+			console.log("Saving: " + apiQueryStrings[radio.id].query);
+			console.log("DB: " + JSON.stringify(apiQueryStrings, null, "\t"));
 		}
 	})
 	// This is the 'off' radio button that has beem turned 'on'
 	// Lookup the saved query for this radio button
-	document.getElementById("queryString").value = apiDefaultStrings[event.target.id];
+	document.getElementById("queryString").value = apiQueryStrings[event.target.id];
 }
 
 string: apiDefaultStrings = {
 	exercisesRB: "abdominal",
 	validatephoneRB: "611300 300 822"
 }
-string: apiQueryStrings = {
+
+apiQueryStrings = {
 	exercisesRB: {query:"abdominal",result:""},
 	validatephoneRB: {query:"611300 300 822",result:""},
 }
