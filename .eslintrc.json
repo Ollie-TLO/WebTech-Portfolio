@@ -1,8 +1,11 @@
 {
   "env": {
-    "browser": true,
     "es2021": true
   },
+"globals": {
+    // only put truly global constants here, e.g.,
+    "myAllowedGlobal": "readonly"
+},
   "extends": "eslint:recommended",
   "parserOptions": {
     "ecmaVersion": 12,
@@ -12,9 +15,10 @@
     "no-var": "error",
     "prefer-const": "warn",
     "no-unused-vars": ["warn", { "args": "none" }],
-    "no-undef": "error",
     "semi": ["error", "always"],
     "quotes": ["error", "double"],
-    "indent": ["error", "tab"]
+    "indent": ["error", "tab"],
+    "strict": ["error", "global"],   // require strict mode globally
+    "no-undef": "error"              // error for undefined variables
   }
 }
