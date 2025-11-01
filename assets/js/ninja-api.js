@@ -6,9 +6,16 @@
 // mutually exclusive behavior, put them in different groups so we have to
 // implement the behavior in code.
 
+EXERCISES_HELP = "\n\nNo Results\n\nEnter the name of a major muscle group, such as:\n" +
+				 "    Abdominals\n" +
+				 "    Glutes\n" +
+				 "    Triceps\n";
+VALIDATE_PHONE_HELP = "\n\nNo Result\n\nEnter a country code followed by a phone number.\n" +
+                      "For example 61 followed by an Australian phone number.\n";
+
 let apiQueryStrings = {
-	exercisesRB: { query: "abdominals", result: "" },
-	validatePhoneRB: { query: "611300300822", result: "" },
+	exercisesRB: { query: "abdominals", result: "" , help: EXERCISES_HELP },
+	validatePhoneRB: { query: "611300300822", result: "", help: VALIDATE_PHONE_HELP },
 };
 
 let queryString = document.getElementById("queryString");
@@ -59,14 +66,13 @@ function callApi() {
 		let url;
 		switch (selectedId) {
 			case "exercisesRB":
-				url = "https://api.api-ninjas.com/v1/exercises?muscle=" +
-					queryString.value;
+				url = "https://api.api-ninjas.com/v1/exercises?muscle=";
 				break;
 			case "validatePhoneRB":
-				url = "https://api.api-ninjas.com/v1/validatephone?number=" +
-					queryString.value;
+				url = "https://api.api-ninjas.com/v1/validatephone?number=";
 				break;
 		}
+		url += encodeURIComponent(queryString.value.trim().replace(/[<>"'`/\\]/g, ''));
 		console.log(url);
 		responseString.value = "";
 		fetch(url, {
@@ -85,6 +91,9 @@ function callApi() {
 		.then((data) => {
 			console.log("data:", data);
 			responseString.value = JSON.stringify(data, null, 2);
+			if (data.length == 0 && selectedId == "exercisesRB") {
+				responseString.value += apiQueryStrings[selectedId].help;
+			}
 		})
 		.catch(error => {
 			// OK. This console.log messages took me _ages_ to get tight. From
@@ -94,6 +103,9 @@ function callApi() {
 			// old C printf-style to avoid en extraneous 'space'.
 			console.log("Exception: %oFetched: %s", error, url);
 			responseString.value = error;
+			if (responseString.value.includes("HTTP Status")) {
+				responseString.value += apiQueryStrings[selectedId].help;
+			}
 		});
 	}
 }

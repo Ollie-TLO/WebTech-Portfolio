@@ -59,6 +59,31 @@ aside img {
 	max-width: 100%;      /* never wider than its container */
 	height: auto;         /* maintain aspect ratio */
 }
+form {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	align-items: start;
+}
+#apiToolForm * {
+    padding: 2px;
+}
+.labeledBlock {
+	display: contents;
+}
+.labeledBlock > span {
+	justify-self: end;
+}
+.labeledBlock > div:not(.buttonRow) {
+	flex-direction: column;
+}
+.labeledBlock > div.buttonRow {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+textarea {
+	width: 100%;
+}
 @media (min-width: 960px) {
 	.sticky-block > header::after {
 		display: none

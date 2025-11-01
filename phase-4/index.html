@@ -6,6 +6,7 @@
 		<title>Phase 3 Sample</title>
 		<link rel="stylesheet" href="../assets/css/modern-normalize.css">
 		<link rel="stylesheet" href="../assets/css/style.css">
+		<script src="../assets/js/ninja-api.js" defer></script>
 		<!-- <link rel="stylesheet" href="../assets/css/debug.css"> -->
 	</head>
 	<body>
@@ -99,45 +100,50 @@
 				</article>
 				<!-- Article 3 -->
 				<article>
-					<!-- <header> -->
-						<!-- <h2>API Tool Sample</h2> -->
-						<!-- <p></p> -->
-					<!-- </header> -->
-					<section>
-						<!-- <header>
-							<h3>COPY, COPY</h3> feat: rudimentary form
-						</header> -->
+					<header>
 						<h2>API Tool Sample</h2>
+					</header>
+					<section>
+						<h3>Ninja</h3>
 						<form id="apiToolForm">
-							<div>
-								<input type="radio" name="radioGroupE" id="exercisesRB" value="exercise" class="radioGroup">
-								<label for="exercisesRB">Exercises API</label>
+							<!-- So much wrong here, like baselines not matching -->
+							<div class="labeledBlock">
+								<span>Select Ninja API: </span>
+								<div>
+									<div>
+										<input type="radio" name="radioGroupE" id="exercisesRB" value="exercises" class="radioGroup">
+										<label for="exercisesRB">Exercises</label>
+									</div>
+									<div>
+										<input type="radio" name="radioGroupP" id="validatePhoneRB" value="phone" class="radioGroup">
+										<label for="validatePhoneRB">Validate Phone</label>
+									</div>
+								</div>
 							</div>
-							<div>
-								<input type="radio" name="radioGroupP" id="validatePhoneRB" value="phone" class="radioGroup">
-								<label for="validatePhoneRB">Validate Phone API</label>
+							<div class="labeledBlock">
+								<span><label for="queryString">Query:</label></span>
+								<div>
+									<input type="text" id="queryString" size="30" placeholder="First, select an API">
+								</div>
 							</div>
-							<div>
-								<label for="queryString">Query:</label>
-								<input type="text" id="queryString" cols="50" placeholder="First, select an API">
+							<div class="labeledBlock">
+								<span></span>
+								<div class="buttonRow">
+									<button type="submit" id="executeButton">Execute</button>
+									<button type="button" id="clearButton">Clear Result</button>
+								</div>
 							</div>
-							<div>
-								<button type="submit" id="executeButton">Execute</button>
-								<button type="button" id="clearButton">Clear Result</button>
-							</div>
-							<div>
-								<label for="responseString">Response:</label>
-								<textarea id="responseString" readonly="true" rows="25" cols="80"></textarea>
+							<div class="labeledBlock">
+								<span><label for="responseString">Response:</label></span>
+								<div>
+									<textarea id="responseString" readonly rows="15" cols="60"></textarea>
+								</div>
 							</div>
 						</form>
-						<script src="../assets/js/ninja-api.js"></script>
-						<!-- <p></p> -->
 					</section>
 					<footer>
-						<p>Content is provided with permission from APC Magazine (TechRadar.com) for the purposes of education and training. Content is Copyright 2007 APC Magazine.</p>
 					</footer>
 				</article>
-				<!-- Article 4 -->
 				<article>
 					<header>
 						<h2>Teacher + Student = dumb and dumber</h2>
