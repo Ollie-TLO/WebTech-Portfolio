@@ -5,48 +5,36 @@
 // radio buttons. In case the point of the exercise is to code the
 // mutually exclusive behavior, put them in different groups so we have to
 // implement the behavior in code.
+// Changed to checkboxes, lacking a sound reason, IMHO.
 
-EXERCISES_HELP = "\n\nNo Results\n\nEnter the name of a major muscle group, such as:\n" +
-				 "    Abdominals\n" +
-				 "    Glutes\n" +
-				 "    Triceps\n";
-VALIDATE_PHONE_HELP = "\n\nNo Result\n\nEnter a country code followed by a phone number.\n" +
-                      "For example 61 followed by an Australian phone number.\n";
+const EXERCISES_HELP = "\n\nNo Results\n\nEnter the name of a major muscle group, such as:\n" +
+					   "    Abdominals\n" +
+					   "    Glutes\n" +
+					   "    Triceps\n";
+const VALIDATE_PHONE_HELP = "\n\nNo Result\n\nEnter a country code followed by a phone number.\n" +
+							"For example 61 followed by an Australian phone number (611300300822).\n";
 
 let apiQueryStrings = {
-	exercisesRB: { query: "abdominals", result: "" , help: EXERCISES_HELP },
-	validatePhoneRB: { query: "611300300822", result: "", help: VALIDATE_PHONE_HELP },
+	exercisesCB: { query: "abdominals", result: "" , help: EXERCISES_HELP },
+	validatePhoneCB: { query: "611300300822", result: "", help: VALIDATE_PHONE_HELP },
 };
 
 let queryString = document.getElementById("queryString");
 let responseString = document.getElementById("responseString");
 
-const radioGroup = document.querySelectorAll('.radioGroup');
+const checkBoxGroup = document.querySelectorAll('.checkGroup');
 
-radioGroup.forEach((radioButton) => {
-	radioButton.addEventListener('change', (event) => {
-		let firstClick = true;
-		radioGroup.forEach((radio) => {
-			if (radio !== event.target && radio.checked === true) {
-				// This is the 'on' radio button that we must turn 'off'
-				radio.checked = false;
-				firstClick = false;
-				// Save query+result before it is overwritten
-				apiQueryStrings[radio.id].query = queryString.value;
-				apiQueryStrings[radio.id].result = responseString.value;
-				//const elem = queryString;
-				//console.log(elem, typeof elem, elem.value);
-			}
-		});
-		// This is the 'off' radio button that has been turned 'on'
-		// Lookup the saved query+result
-		if (!firstClick || !queryString.value) {
-			// If this was not the first time radio button was clicked, or user
-			// has not typed into queryString, use their input instead of default
-			queryString.value = apiQueryStrings[event.target.id].query;
+checkBoxGroup.forEach((currentCheckBox) => {
+	currentCheckBox.addEventListener('change', (event) => {
+		if (currentCheckBox.checked) {
+			queryString.value = "";
+			responseString.value = "";
+			checkBoxGroup.forEach((other) => {
+				if (currentCheckBox !== other) {
+					other.checked = false;
+				}
+			});
 		}
-		responseString.value = apiQueryStrings[event.target.id].result;
-		console.log("DB: " + JSON.stringify(apiQueryStrings, null, "\t"));
 	});
 });
 
@@ -56,19 +44,23 @@ document.getElementById('clearButton').addEventListener("click", () => {
 
 document.getElementById('apiToolForm').addEventListener("submit", (event) => {
 	event.preventDefault();  // prevent page scroller reset
-	callApi(event);
+	if ([...checkBoxGroup].some((cb) => cb.checked)) {
+		callApi(event);
+	} else {
+		responseString.value = "Please select an API first";
+	}
 });
 
 function callApi() {
 	// let selectedId = [...radioGroup].find((r) => r.checked)?.id;  // ES6 wont allow ?.
-	let selectedId = ([...radioGroup].find((r) => r.checked) || {}).id;
+	let selectedId = ([...checkBoxGroup].find((cb) => cb.checked) || {}).id;
 	if (selectedId) {
 		let url;
 		switch (selectedId) {
-			case "exercisesRB":
+			case "exercisesCB":
 				url = "https://api.api-ninjas.com/v1/exercises?muscle=";
 				break;
-			case "validatePhoneRB":
+			case "validatePhoneCB":
 				url = "https://api.api-ninjas.com/v1/validatephone?number=";
 				break;
 		}
@@ -91,7 +83,7 @@ function callApi() {
 		.then((data) => {
 			console.log("data:", data);
 			responseString.value = JSON.stringify(data, null, 2);
-			if (data.length == 0 && selectedId == "exercisesRB") {
+			if (data.length == 0 && selectedId == "exercisesCB") {
 				responseString.value += apiQueryStrings[selectedId].help;
 			}
 		})
